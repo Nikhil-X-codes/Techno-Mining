@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: #ffffff;
+}
+
+.scroll-section {
+	scroll-margin-top: 160px;
+}
+
+.marquee {
+	position: relative;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 0.75rem;
+	line-height: 1.5rem;
+	padding: 0.25rem 0;
+}
+
+.marquee-track {
+	display: flex;
+	gap: 2.5rem;
+	width: max-content;
+	animation: marquee-scroll 16s linear infinite;
+	will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+.marquee-track span {
+	font-weight: 600;
+	letter-spacing: 0.02em;
+}
+
+@keyframes marquee-scroll {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
