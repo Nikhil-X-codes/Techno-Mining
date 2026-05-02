@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Techno Mining delivers DGMS compliance, surveying, and safety solutions for modern mining operations." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className={`${sora.className} bg-white text-gray-900`}>
+      <body className={`${sora.className} bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100`}>
         <TopHeader />
         <Navbar />
         <AnimatePresence mode="wait" initial={false}>

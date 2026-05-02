@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="text-left">
             <motion.span
-              className="text-lg md:text-xl font-bold text-gray-900"
+              className="text-lg md:text-xl font-bold text-gray-900 dark:text-white"
               whileHover={{ y: -1 }}
             >
               Techno Mining
@@ -81,7 +81,7 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <motion.div
-            className="hidden md:flex items-center gap-8"
+            className="hidden md:flex items-center gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -113,18 +113,20 @@ export default function Navbar() {
           </motion.div>
 
           {/* Mobile Menu Button */}
-          <motion.button
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-            className={cn(
-              'md:hidden p-2 rounded-lg transition-colors',
-              'text-gray-700 dark:text-gray-300',
-              'hover:bg-gray-100 dark:hover:bg-gray-800'
-            )}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+          <div className="flex items-center gap-2 md:hidden">
+            <motion.button
+              onClick={() => setIsOpen(!isOpen)}
+              whileTap={{ scale: 0.95 }}
+              className={cn(
+                'p-2 rounded-lg transition-colors',
+                'text-gray-700 dark:text-gray-300',
+                'hover:bg-gray-100 dark:hover:bg-gray-800'
+              )}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

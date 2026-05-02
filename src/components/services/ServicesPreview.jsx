@@ -16,14 +16,14 @@ export default function ServicesPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: false }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <motion.span
             className="text-blue-600 font-semibold text-sm uppercase tracking-wide"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             Our Services
           </motion.span>
@@ -33,7 +33,7 @@ export default function ServicesPreview() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             Comprehensive Mining Solutions
           </motion.h2>
@@ -43,7 +43,7 @@ export default function ServicesPreview() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.2 }}
           >
             We offer end-to-end services tailored to meet the unique needs of modern mining operations.
           </motion.p>
@@ -57,6 +57,7 @@ export default function ServicesPreview() {
               icon={service.icon}
               title={service.title}
               description={service.description}
+              href={`/services/${service.slug}`}
               delay={index * 0.1}
             />
           ))}
@@ -68,7 +69,7 @@ export default function ServicesPreview() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: false }}
+          viewport={{ once: false, amount: 0.2 }}
         >
           <Link href="/services">
             <motion.button

@@ -2,78 +2,9 @@
 
 import { motion } from 'framer-motion';
 import ServiceCard from '@/components/services/ServiceCard';
-import { FileCheck, Users, Map, Drone, Zap, Shield, CheckCircle2 } from 'lucide-react';
+import { serviceDetails } from '@/data/service-details';
 
 export default function ServicesPage() {
-  const services = [
-    {
-      icon: FileCheck,
-      title: 'DGMS Permission & Compliance',
-      description:
-        'Expert assistance in obtaining DGMS permissions and ensuring statutory compliance for mining operations.',
-      details: [
-        'Regulatory documentation and submissions',
-        'Compliance audits and action plans',
-        'Ongoing statutory reporting support',
-      ],
-    },
-    {
-      icon: Users,
-      title: 'Statutory Manpower Deployment',
-      description:
-        'Professional manpower deployment meeting all statutory requirements and safety standards.',
-      details: [
-        'Qualified managers and safety officers',
-        'Shift coverage and staffing plans',
-        'Training and readiness audits',
-      ],
-    },
-    {
-      icon: Map,
-      title: 'DGMS Survey Plan & Section',
-      description:
-        'Comprehensive survey documentation including detailed plans and geological sections for mining sites.',
-      details: [
-        'Certified mine plans and sections',
-        'Boundary and lease demarcation',
-        'GIS-ready documentation packages',
-      ],
-    },
-    {
-      icon: Drone,
-      title: 'Drone Surveying Services',
-      description:
-        'Modern drone technology for precise aerial surveys, mapping, and site documentation.',
-      details: [
-        'Orthomosaic and contour mapping',
-        'Volumetric analysis and reporting',
-        'Rapid turnarounds for large sites',
-      ],
-    },
-    {
-      icon: Zap,
-      title: 'Scientific Blasting & Slope Stability',
-      description:
-        'Expert blasting design and comprehensive slope stability analysis using scientific methods.',
-      details: [
-        'Blast pattern design and review',
-        'Slope stability modeling',
-        'Risk mitigation recommendations',
-      ],
-    },
-    {
-      icon: Shield,
-      title: 'EC & CTO/CTE Applications',
-      description:
-        'Complete assistance with Environment Clearance and technical approval applications.',
-      details: [
-        'Application drafting and compliance',
-        'Stakeholder coordination',
-        'Follow-ups through approvals',
-      ],
-    },
-  ];
-
   const caseStudies = [
     {
       title: 'DGMS Permission Fast-Track Processing',
@@ -118,14 +49,14 @@ export default function ServicesPage() {
     <div className="pb-16 md:pb-24">
       {/* Page Header */}
       <motion.section
-        className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-12 md:py-16"
+        className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 dark:from-slate-950 dark:via-blue-950 dark:to-slate-950 text-white py-12 md:py-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-lg text-blue-100">
+          <p className="text-lg text-blue-100 dark:text-blue-200">
             Comprehensive mining and DGMS compliance solutions for your operations
           </p>
         </div>
@@ -139,14 +70,15 @@ export default function ServicesPage() {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.2 }}
           >
-            {services.map((service, index) => (
+            {serviceDetails.map((service, index) => (
               <ServiceCard
-                key={service.title}
+                key={service.slug}
                 icon={service.icon}
-                title={service.title}
-                description={service.description}
+                title={service.name}
+                description={service.summary}
+                href={`/services/${service.slug}`}
                 delay={index * 0.05}
               />
             ))}
@@ -154,64 +86,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Service Details */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: false }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Detailed Service Coverage
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-3">
-              Choose the exact support you need or combine services for a full compliance and operations package.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false }}
-          >
-            {services.map((service) => (
-              <motion.div
-                key={service.title}
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm"
-                whileHover={{ y: -6, boxShadow: '0 18px 40px rgba(15, 23, 42, 0.12)' }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
-                    <service.icon size={26} />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">
-                      {service.description}
-                    </p>
-                    <ul className="space-y-2">
-                      {service.details.map((detail) => (
-                        <li key={detail} className="flex items-center gap-2 text-sm text-gray-700">
-                          <CheckCircle2 size={16} className="text-blue-600" />
-                          <span>{detail}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

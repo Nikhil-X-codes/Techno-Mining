@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Mail, Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const ANNOUNCEMENT_TEXT = 'Techno Mining';
+const ANNOUNCEMENT_TEXT = 'Techno Mining is Live';
 
 export default function TopHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +33,7 @@ export default function TopHeader() {
           <div className="relative flex whitespace-nowrap">
             
             <motion.div
-              className="flex gap-16 py-2 text-sm font-semibold"
+              className="flex py-2 text-sm font-semibold"
               animate={{ x: ['0%', '-100%'] }}
               transition={{
                 repeat: Infinity,
@@ -41,11 +41,9 @@ export default function TopHeader() {
                 ease: 'linear',
               }}
             >
-              {[...Array(8)].map((_, i) => (
-                <span key={i} className="flex items-center">
-                  {ANNOUNCEMENT_TEXT}
-                </span>
-              ))}
+              <span className="flex items-center">
+                {ANNOUNCEMENT_TEXT}
+              </span>
             </motion.div>
 
           </div>

@@ -35,7 +35,7 @@ export default function AboutPreview() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: false }}
             >
-              Trusted Leader in Mining Services
+              Mining Consultancy Built for Results
             </motion.h2>
 
             <motion.p
@@ -45,7 +45,7 @@ export default function AboutPreview() {
               transition={{ duration: 0.6, delay: 0.3 }}
               viewport={{ once: false }}
             >
-              Techno Mining delivers compliance-ready planning, surveying, and safety systems for modern mining operations. We help teams reduce risk, meet regulatory timelines, and keep production steady.
+              Techno Mining delivers expert-led consulting that blends operational and technical excellence with business improvement. We help mine sites identify performance gaps, improve safety, and deliver sustainable results quickly.
             </motion.p>
 
             <motion.div
