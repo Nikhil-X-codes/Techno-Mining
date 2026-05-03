@@ -1,17 +1,34 @@
 import { notFound } from 'next/navigation';
 import ServiceDetail from '@/components/services/ServiceDetail';
-import { serviceDetails } from '@/data/service-details';
+import { servicesData } from '@/data/services-data';
 
-export default function ServiceDetailPage({ params }) {
-  const service = serviceDetails.find((item) => item.slug === params.slug);
+export async function generateStaticParams() {
+  return servicesData.map((service) => ({ slug: service.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const service = servicesData.find((item) => item.slug === slug);
+
+  if (!service) {
+    return { title: 'Service Not Found' };
+  }
+
+  return {
+    title: `${service.title} | Services`,
+    description: service.description,
+  };
+}
+
+export default async function ServicePage({ params }) {
+  const { slug } = await params;
+  const service = servicesData.find((item) => item.slug === slug);
 
   if (!service) {
     notFound();
   }
 
-  return <ServiceDetail service={service} />;
-}
+  const { title, description, image, imageAlt, details } = service;
 
-export async function generateStaticParams() {
-  return serviceDetails.map((item) => ({ slug: item.slug }));
+  return <ServiceDetail service={{ title, description, image, imageAlt, details }} />;
 }

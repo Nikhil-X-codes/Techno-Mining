@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Download } from 'lucide-react';
@@ -28,24 +27,29 @@ export default function TopHeader() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* 🔥 Moving Announcement Ad */}
+        {/* Single Smooth Moving Announcement Banner */}
         <div className="bg-black text-white overflow-hidden">
-          <div className="relative flex whitespace-nowrap">
-            
+          <div className="relative py-3">
             <motion.div
-              className="flex py-2 text-sm font-semibold"
-              animate={{ x: ['0%', '-100%'] }}
+              className="flex whitespace-nowrap"
+              initial={{ x: '0%' }}
+              animate={{ x: '-100%' }}
               transition={{
                 repeat: Infinity,
-                duration: 15,
+                repeatType: 'loop',
+                duration: 20,
                 ease: 'linear',
               }}
             >
-              <span className="flex items-center">
-                {ANNOUNCEMENT_TEXT}
-              </span>
+              <div className="flex items-center justify-center gap-8 pr-8 min-w-full">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div key={index} className="flex items-center gap-8">
+                    <span className="text-sm font-semibold">{ANNOUNCEMENT_TEXT}</span>
+                    {index < 4 && <span className="h-1 w-1 rounded-full bg-white/50" />}
+                  </div>
+                ))}
+              </div>
             </motion.div>
-
           </div>
         </div>
 

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ServiceCard from '@/components/services/ServiceCard';
-import { serviceDetails } from '@/data/service-details';
+import { servicesData } from '@/data/services-data';
 
 export default function ServicesPage() {
   const caseStudies = [
@@ -72,12 +72,14 @@ export default function ServicesPage() {
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
           >
-            {serviceDetails.map((service, index) => (
+            {servicesData.map((service, index) => (
               <ServiceCard
                 key={service.slug}
                 icon={service.icon}
-                title={service.name}
-                description={service.summary}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+                imageAlt={service.imageAlt}
                 href={`/services/${service.slug}`}
                 delay={index * 0.05}
               />

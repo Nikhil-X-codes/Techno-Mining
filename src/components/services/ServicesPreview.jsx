@@ -6,6 +6,8 @@ import ServiceCard from './ServiceCard';
 import { servicesData } from '@/data/services-data';
 
 export default function ServicesPreview() {
+  const featuredServices = servicesData.slice(0, 4);
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24 bg-gray-50">
       <div className="pointer-events-none absolute -top-10 left-1/3 h-56 w-56 rounded-full bg-blue-100 blur-3xl opacity-70" />
@@ -51,12 +53,14 @@ export default function ServicesPreview() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {servicesData.map((service, index) => (
+          {featuredServices.map((service, index) => (
             <ServiceCard
               key={service.id}
               icon={service.icon}
               title={service.title}
               description={service.description}
+              image={service.image}
+              imageAlt={service.imageAlt}
               href={`/services/${service.slug}`}
               delay={index * 0.1}
             />

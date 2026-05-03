@@ -6,6 +6,7 @@ import { Sora } from 'next/font/google';
 import TopHeader from '@/components/layout/TopHeader';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import ChatbotButton from '@/components/ui/ChatbotButton';
 import './globals.css';
 
 const sora = Sora({
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
             {children}
           </motion.main>
         </AnimatePresence>
+        <ChatbotButton />
         {showFooter ? <Footer /> : null}
       </body>
     </html>
