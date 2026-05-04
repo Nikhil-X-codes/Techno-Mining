@@ -8,6 +8,16 @@ import { servicesData } from '@/data/services-data';
 export default function ServicesPreview() {
   const featuredServices = servicesData.slice(0, 4);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
     <section className="relative overflow-hidden py-16 md:py-24 bg-gray-50">
       <div className="pointer-events-none absolute -top-10 left-1/3 h-56 w-56 rounded-full bg-blue-100 blur-3xl opacity-70" />
@@ -52,7 +62,12 @@ export default function ServicesPreview() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+          variants={containerVariants}
+          initial="visible"
+          animate="visible"
+        >
           {featuredServices.map((service, index) => (
             <ServiceCard
               key={service.id}
@@ -65,7 +80,7 @@ export default function ServicesPreview() {
               delay={index * 0.1}
             />
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA Button */}
         <motion.div
